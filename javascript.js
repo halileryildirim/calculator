@@ -1,5 +1,8 @@
 let currentValue, previousValue;
 
+currentValue = '';
+previousValue = '';
+
 const add = function(value1, value2) {
     return value1 + value2;
 }
@@ -20,21 +23,28 @@ const operate = function(operator, value1, value2) {
 }
 
 const numberButtons = document.querySelectorAll(".number");
-const operatorButtons = document.querySelectorAll(".operator")
+const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector(".equals");
-
+const preValue = document.querySelector(".previous");
+const currValue = document.querySelector(".current");
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        alert(button.innerText)
+        currentValue += button.innerText; 
+        currValue.innerText = currentValue;
     })
 })
 
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        alert(button.innerText)
+        previousValue = currentValue + " " + button.innerText;
+        preValue.innerText = previousValue;
+        currentValue = '';
+        currValue.innerText = currentValue;
     })
 })
+
+
 
 

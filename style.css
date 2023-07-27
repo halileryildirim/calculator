@@ -45,8 +45,9 @@ h1 {
 .screen {
     display: flex;
     flex-direction: column;
-    flex:2;
-    height: 99px;
+    flex:1;
+    height: 100px;
+    width: 300px;
     text-align: end;
     justify-content: center;
     font-size: 40px;

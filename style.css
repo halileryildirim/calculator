@@ -23,14 +23,13 @@ button:hover {
     color: #a2bbcf;
 }
 
-
 h1 {
     text-align: center;
     margin-top: 2px;
 }
 
 .calculator{
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #142f44;
     padding: 20px;
     color: white;

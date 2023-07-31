@@ -66,9 +66,14 @@ numberButtons.forEach(button => {
 
 decimalButton.addEventListener('click', () => {
     if(!currentValue.includes(".")) {
-        currentValue += ".";
-        currValue.innerText = currentValue;
-
+        if(currentValue = ".") {
+            currentValue = "0.";
+            currValue.innerText = currentValue;
+        }
+        else if(currentValue != ""){
+            currentValue += ".";
+            currValue.innerText = currentValue;
+        }
     }
 })
 
@@ -119,7 +124,12 @@ equalsButton.addEventListener('click', () => {
     if(previousValue == "" && currentValue == "") {
         currValue.innerText = "ERROR";
     }
+
     else if(previousValue != "" && currentValue == "") {
+        currValue.innerText = currentValue;
+    }
+    
+    else if(currentValue!='' && previousValue== "") {
         currValue.innerText = currentValue;
     }
     else {
@@ -144,6 +154,7 @@ equalsButton.addEventListener('click', () => {
 Divide by zero error not working -solved
 Equal after operator is causing errors. -solved
 Decimal not working -solved
+Equals without operator and a current value is causing NaN bs. -solved
 Floats are huge
 Numbers are flowing out of display
 innertext everytime is not a good practice -> build a function

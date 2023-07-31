@@ -139,12 +139,6 @@ equalsButton.addEventListener('click', () => {
 
 });
 
-
-window.addEventListener('click', () => {
-    console.log("crnt: " + currentValue);
-    console.log("prvs: " + previousValue);
-})
-
 /*
 
 Divide by zero error not working -solved

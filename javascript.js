@@ -66,14 +66,8 @@ numberButtons.forEach(button => {
 
 decimalButton.addEventListener('click', () => {
     if(!currentValue.includes(".")) {
-        if(currentValue = ".") {
-            currentValue = "0.";
-            currValue.innerText = currentValue;
-        }
-        else if(currentValue != ""){
-            currentValue += ".";
-            currValue.innerText = currentValue;
-        }
+        currentValue += ".";
+        currValue.innerText = currentValue;
     }
 })
 

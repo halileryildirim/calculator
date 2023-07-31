@@ -23,6 +23,16 @@ button:hover {
     color: #a2bbcf;
 }
 
+button:active {
+    background-color: transparent;
+    color: #a2bbcf;
+}
+
+#operator:focus {
+    background-color: green;
+    color: #a2bbcf;
+}
+
 h1 {
     text-align: center;
     margin-top: 2px;

@@ -36,6 +36,7 @@ button:active {
 h1 {
     text-align: center;
     margin-top: 2px;
+   
 }
 
 .calculator{
@@ -49,6 +50,13 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #285170;
+    
+}
+
+.other-rows{
+    background-color: #285170;
+    
 }
 
 .screen {
@@ -60,8 +68,9 @@ h1 {
     text-align: end;
     justify-content: center;
     font-size: 40px;
-    border: 2px solid #a2bbcf;
+    border: 2px solid transparent;
     padding-right: 8px;
+    border-radius: 15px;
 }
 
 

@@ -1,10 +1,10 @@
-let currentValue, previousValue, operator;
+let currentValue, previousValue, operator;  //Declarations
 
 currentValue = '';
 previousValue = '';
 operator = '';
 
-const add = function(value1, value2) {
+const add = function(value1, value2) {      //Operator functions
     return value1 + value2;
 };
 const subtract = function(value1, value2) {
@@ -17,7 +17,7 @@ const divide = function(value1, value2) {
     return value1 / value2;
 };
 
-const operate = function(operator, value1, value2) {
+const operate = function(operator, value1, value2) {    //Function to call the operators and use it with statements.
     if(operator == "+") {
         return add(value1, value2);
     }
@@ -36,7 +36,7 @@ const operate = function(operator, value1, value2) {
     }
 };
 
-const numberButtons = document.querySelectorAll(".number");
+const numberButtons = document.querySelectorAll(".number");     //Dom selectors for buttons
 const addButton = document.querySelector(".add");
 const subtractButton = document.querySelector(".subtract");
 const divideButton = document.querySelector(".divide");
@@ -44,27 +44,19 @@ const multiplyButton = document.querySelector(".multiply");
 const clearButton = document.querySelector(".clear");
 const decimalButton = document.querySelector(".decimal");
 const equalsButton = document.querySelector(".equals");
-const preValue = document.querySelector(".previous");
+const preValue = document.querySelector(".previous");           //Dom selectors for display
 const currValue = document.querySelector(".current");
 
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        if(currentValue.length < 15) {
-            currentValue += button.innerText; 
+        if(currentValue.length <=5) {
+            currentValue += button.innerText;                   //EventListener is blocked by 6 digit number inputs to prevent calculator from breaking.
             currValue.innerText = currentValue;
         }
-        else if(currentValue == "ERROR") {
-            currentValue = "";
-            currValue.innerText = currentValue;
-        }
-        else {
-            alert("ERROR");
-        }   
-        
     })
 })
 
-decimalButton.addEventListener('click', () => {
+decimalButton.addEventListener('click', () => {                 //Operators display update eventListeners
     if(!currentValue.includes(".")) {
         currentValue += ".";
         currValue.innerText = currentValue;
@@ -83,7 +75,7 @@ clearButton.addEventListener('click', () => {
 addButton.addEventListener('click', () => {
     operator = "+";
     previousValue = currentValue;
-    preValue.innerText = previousValue;
+    preValue.innerText = previousValue + " + ";
     currentValue = '';
     currValue.innerText = currentValue;
 });
@@ -91,7 +83,7 @@ addButton.addEventListener('click', () => {
 subtractButton.addEventListener('click', () => {
     operator = "-";
     previousValue = currentValue;
-    preValue.innerText = previousValue;
+    preValue.innerText = previousValue + " - ";
     currentValue = '';
     currValue.innerText = currentValue;
 });
@@ -99,7 +91,7 @@ subtractButton.addEventListener('click', () => {
 multiplyButton.addEventListener('click', () => {
     operator = "x";
     previousValue = currentValue;
-    preValue.innerText = previousValue;
+    preValue.innerText = previousValue + " x ";
     currentValue = '';
     currValue.innerText = currentValue;
 })
@@ -107,12 +99,15 @@ multiplyButton.addEventListener('click', () => {
 divideButton.addEventListener('click', () => {
     operator = "/";
     previousValue = currentValue;
-    preValue.innerText = previousValue;
+    preValue.innerText = previousValue + " / ";
     currentValue = '';
     currValue.innerText = currentValue;
 });
 
 
+function roundNumber(num) {                                     //To create both float and int outcomes but limit the digits after the "."
+    return Math.round(num * 1000) / 1000;
+}
 
 equalsButton.addEventListener('click', () => {
     if(previousValue == "" && currentValue == "") {
@@ -127,11 +122,11 @@ equalsButton.addEventListener('click', () => {
         currValue.innerText = currentValue;
     }
     else {
-        previousValue = parseFloat(previousValue);
+        previousValue = parseFloat(previousValue);              //Preventing calculator from divide by zero error and resetting the program.
         currentValue = parseFloat(currentValue);
         currentValue = operate(operator, previousValue, currentValue);
         preValue.innerText = previousValue;
-        currValue.innerText = currentValue;
+        currValue.innerText = roundNumber(currentValue);
 
         if(currentValue == "Infinity") {
             currentValue = "";
@@ -142,15 +137,3 @@ equalsButton.addEventListener('click', () => {
     }
 
 });
-
-/*
-
-Divide by zero error not working -solved
-Equal after operator is causing errors. -solved
-Decimal not working -solved
-Equals without operator and a current value is causing NaN bs. -solved
-Floats are huge
-Numbers are flowing out of display
-innertext everytime is not a good practice -> build a function
-
-*/
